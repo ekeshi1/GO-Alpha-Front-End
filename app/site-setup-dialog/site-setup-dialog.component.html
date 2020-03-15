@@ -1,0 +1,54 @@
+<div style="min-width:300px">
+  <h1 mat-dialog-title>Follow these steps in order to enable push notifications for you site.</h1>
+  <div mat-dialog-content>
+    <mat-vertical-stepper [linear]="false" #stepper>
+      <mat-step >
+
+          <ng-template matStepLabel>1.Download scripts</ng-template>
+            <div>Download javascript files by clicking  <a href="https://storage.googleapis.com/scripts-push-notf/alpha-push-scripts.zip"> here</a> </div>
+
+
+      </mat-step>
+      <mat-step >
+        <ng-template matStepLabel>2.Unzip and paste the files in your website's javascript files. </ng-template>
+
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel> 3.Add the below code to your main html file </ng-template>
+
+        <pre>
+          <p>
+            <code [innerHTML]="this.code"></code>
+          </p>
+        </pre>
+
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel> 4.Visit your website and allow notifications </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel> 5.Open new Campaign </ng-template>
+        You can either start the campaign immediately or schedule it for later.
+        It is possible to customize the notification title,description,  redirect Url and the icon.
+
+
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel> 6.Check live updates on how your campaign is doing </ng-template>
+
+        Information on number of notifications sent and number of notifications opened.
+
+
+      </mat-step>
+
+
+    </mat-vertical-stepper>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+
+  </div>
+</div>
+</div>

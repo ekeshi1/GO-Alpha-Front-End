@@ -1,0 +1,8 @@
+<div class="row">
+  <div *ngIf="success" class="col-md-6  col-md-offset-3" >
+    {{msg}}
+  </div>
+  <div *ngIf="!success" class="col-md-6 col-md-offset-3 alert-danger">
+    <h2> {{msg}} </h2>
+  </div>
+</div>

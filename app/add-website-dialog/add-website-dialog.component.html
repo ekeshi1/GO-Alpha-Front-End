@@ -1,0 +1,17 @@
+<div style="min-width:300px">
+  <h1 mat-dialog-title>Add new Website</h1>
+  <div mat-dialog-content>
+    <p>Complete your site details</p>
+    <mat-form-field>
+      <input matInput placeholder="Site name" [(ngModel)]="data.siteName">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="URL" [(ngModel)]="data.siteUrl">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" (click)="onAdd()">Add</button>
+  </div>
+</div>

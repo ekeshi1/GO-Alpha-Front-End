@@ -1,0 +1,53 @@
+<div class="container">
+  <h2>Sites</h2>
+  <button mat-raised-button color="primary" *ngIf="hideHistory" (click)="addWebsite()">Add new website</button>
+  <button mat-raised-button color="primary" *ngIf="!hideHistory" [routerLink]="['../', 'campaign', siteId]">Add new Campaign</button>
+  <button mat-raised-button color="primary" *ngIf="!hideHistory" style="margin-left:20px" (click)="hideHistory = !hideHistory">Show Sites</button>
+  <mat-card *ngIf="!sites.length" class="nohistory">
+    <div style="margin:30px 0">No previous Applications</div>
+  </mat-card>
+
+  <ngx-datatable *ngIf="sites.length>0 && hideHistory" style="margin-top:20px" class="material" [columnMode]="'force'" [headerHeight]="50"
+    [footerHeight]="25" [rowHeight]="auto" [rows]="sites" [limit]="7">
+    <ngx-datatable-column name="Site Name" prop="siteName" [width]="80">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Campaigns" prop="campaigns" [width]="50">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Subscriptions" prop="users" [width]="50">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Action" [width]="10">
+      <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+        <button mat-raised-button color="primary" (click)="checkRows(row)">{{row.campaigns ? 'View': 'Add Campaign'}}</button>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Delete" [width]="10">
+        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+         <button mat-icon-button color="warn" (click)="deleteSite(row.idSite)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+  </ngx-datatable>
+
+  <ngx-datatable *ngIf="campaigns.length>0 && !hideHistory" style="margin-top:20px" class="material" [columnMode]="'force'"
+    [headerHeight]="50" [footerHeight]="25" [rowHeight]="auto" [rows]="campaigns" [limit]="7">
+    <ngx-datatable-column name="Campaign Name" prop="campaignName" [width]="80">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Description" prop="campaignDescription" [width]="80">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Creation date" [width]="80">
+      <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+        {{row.creationDate ? (row.creationDate | date: 'dd-MM-yyy hh:mm') : '-' }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Notific. Sent" prop="nrSent" [width]="80">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Notific. Opened" prop="nrOpened" [width]="80">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Action" [width]="80">
+      <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+        <button mat-raised-button color="primary" (click)="viewCampaign(row)">Preview</button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>

@@ -1,0 +1,20 @@
+
+<flash-messages></flash-messages>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="logo" style="
+        background: url('assets/images/logo.png') no-repeat;
+        -webkit-background-size: 20px 25px;height: 25px;
+        background-size: 25px 25px;width: 30px;"></div>
+
+    <span routerLink="./home">AlphaPush</span>
+    <span class="example-spacer"></span>
+    <span *ngIf="!this.authService.loggedIn()">Account</span>
+    <span *ngIf="this.authService.loggedIn()">{{this.authService.user.name}}</span>
+
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Account">person</mat-icon>
+    <span class="example-spacer"></span>
+    <span *ngIf="this.authService.loggedIn()" (click)="this.authService.logout()">Logout</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
